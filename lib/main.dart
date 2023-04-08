@@ -77,6 +77,7 @@ class MyHomePage extends StatelessWidget {
                                 style: TextStyle(color: Colors.grey),
                               )
                             ],
+                            crossAxisAlignment: CrossAxisAlignment.start,
                           )
                         ],
                       ),
