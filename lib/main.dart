@@ -59,7 +59,7 @@ class MyHomePage extends StatelessWidget {
                                     Border.all(color: Colors.purple, width: 2)),
                             padding: EdgeInsets.all(10),
                             child: Text(
-                              e.value.toString(),
+                              "R\$ ${e.value.toStringAsFixed(2)}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
