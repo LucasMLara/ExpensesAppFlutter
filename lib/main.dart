@@ -67,7 +67,16 @@ class MyHomePage extends StatelessWidget {
                             ),
                           ),
                           Column(
-                            children: [Text(e.title), Text(e.date.toString())],
+                            children: [
+                              Text(
+                                e.title,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                e.date.toString(),
+                                style: TextStyle(color: Colors.grey),
+                              )
+                            ],
                           )
                         ],
                       ),
