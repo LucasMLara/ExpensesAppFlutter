@@ -1,3 +1,4 @@
+import 'package:expenses/components/transaction_form.dart';
 import 'package:expenses/components/transaction_list.dart';
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
@@ -47,28 +48,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           TrasactionList(_transactions),
-          Card(
-            elevation: 5,
-            child: Column(children: <Widget>[
-              const TextField(
-                decoration: InputDecoration(labelText: 'Título'),
-              ),
-              const TextField(
-                decoration: InputDecoration(labelText: 'Valor (R\$)'),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                      onPressed: () {},
-                      style:
-                          // https://www.flutterbeads.com/text-button-color-in-flutter/
-                          TextButton.styleFrom(foregroundColor: Colors.purple),
-                      child: const Text('Nova Transação')),
-                ],
-              )
-            ]),
-          )
+          TransactionForm()
         ],
       ),
     );
