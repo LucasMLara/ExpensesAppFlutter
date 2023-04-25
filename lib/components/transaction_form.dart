@@ -8,6 +8,15 @@ class TransactionForm extends StatelessWidget {
 
   TransactionForm(this.onSubmit, {super.key});
 
+  _submitForm() {
+    final title = titleController.text;
+    final value = double.tryParse(valueController.text) ?? 0.0;
+
+    if (title.isEmpty || value <= 0) return;
+
+    onSubmit(title, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -16,10 +25,13 @@ class TransactionForm extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Column(children: <Widget>[
           TextField(
+            onSubmitted: (_) => _submitForm(),
             controller: titleController,
             decoration: const InputDecoration(labelText: 'Título'),
           ),
           TextField(
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            onSubmitted: (_) => _submitForm(),
             controller: valueController,
             decoration: const InputDecoration(labelText: 'Valor (R\$)'),
           ),
@@ -27,11 +39,7 @@ class TransactionForm extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
-                  onPressed: () {
-                    final title = titleController.text;
-                    final value = double.tryParse(valueController.text) ?? 0.0;
-                    onSubmit(title, value);
-                  },
+                  onPressed: _submitForm,
                   style:
                       // https://www.flutterbeads.com/text-button-color-in-flutter/
                       TextButton.styleFrom(foregroundColor: Colors.purple),
