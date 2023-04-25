@@ -82,11 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             TrasactionList(_transactions),
-            // Column(
-            //   children: [
-            //     TransactionForm(_addTransaction),
-            //   ],
-            // )
           ],
         ),
       ),
