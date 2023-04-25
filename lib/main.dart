@@ -8,7 +8,7 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -16,7 +16,7 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +24,21 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Despesas pessoais'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: const Card(
-              color: Colors.blue,
-              elevation: 5,
-              child: Text('Gráfico'),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: const <Widget>[
+            SizedBox(
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                elevation: 5,
+                child: Text('Gráfico'),
+              ),
             ),
-          ),
-          TransactionUser()
-        ],
+            TransactionUser()
+          ],
+        ),
       ),
     );
   }

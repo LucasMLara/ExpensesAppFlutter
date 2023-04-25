@@ -8,7 +8,7 @@ class TrasactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: 300,
         // Listview renderizando componentes sob demanda, tornando a aplicação mais performática
         child: ListView.builder(
