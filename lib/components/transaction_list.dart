@@ -10,8 +10,6 @@ class TrasactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 430,
-
         // Listview renderizando componentes sob demanda, tornando a aplicação mais performática
         child: transactions.isEmpty
             ? Column(
