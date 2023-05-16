@@ -41,14 +41,26 @@ class _TransactionFormState extends State<TransactionForm> {
             controller: valueController,
             decoration: const InputDecoration(labelText: 'Valor (R\$)'),
           ),
+          Container(
+            height: 70,
+            child: Row(
+              children: <Widget>[
+                Text('Nenhuma Data selecionada!'),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('Selecionar Data'),
+                )
+              ],
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TextButton(
+              ElevatedButton(
                   onPressed: _submitForm,
-                  style:
-                      // https://www.flutterbeads.com/text-button-color-in-flutter/
-                      TextButton.styleFrom(foregroundColor: Colors.purple),
+                  // style:
+                  //     // https://www.flutterbeads.com/text-button-color-in-flutter/
+                  //     TextButton.styleFrom(foregroundColor: Colors.purple),
                   child: const Text('Nova Transação')),
             ],
           )

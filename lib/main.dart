@@ -106,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purple,
         child: const Icon(Icons.add),
         onPressed: () => _openTransactionFormModal(context),
       ),
