@@ -32,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var _showchart = false;
   final List<Transaction> _transactions = [
     // Transaction(
     //   id: 't0',
@@ -95,6 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     final appBar = AppBar(
       actions: <Widget>[
         IconButton(
@@ -112,14 +116,30 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: availableHeight * 0.3,
-              child: Chart(_recentTransactions),
-            ),
-            Container(
-              height: availableHeight * 0.7,
-              child: TrasactionList(_transactions, _removeTransaction),
-            ),
+            if (isLandscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Exibir gráfico'),
+                  Switch(
+                      value: _showchart,
+                      onChanged: (value) {
+                        setState(() {
+                          _showchart = value;
+                        });
+                      }),
+                ],
+              ),
+            if (_showchart || !isLandscape)
+              Container(
+                height: availableHeight * (isLandscape ? 0.7 : 0.3),
+                child: Chart(_recentTransactions),
+              ),
+            if (!_showchart || !isLandscape)
+              Container(
+                height: availableHeight * 0.7,
+                child: TrasactionList(_transactions, _removeTransaction),
+              ),
           ],
         ),
       ),
