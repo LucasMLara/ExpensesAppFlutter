@@ -15,6 +15,9 @@ class TrasactionList extends StatelessWidget {
             ? LayoutBuilder(builder: (context, constraints) {
                 return Column(
                   children: <Widget>[
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(
                       'Não há transações cadastradas!',
                       style: Theme.of(context).textTheme.headline5,

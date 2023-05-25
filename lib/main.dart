@@ -101,9 +101,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final appBar = AppBar(
       actions: <Widget>[
+        if (isLandscape)
+          IconButton(
+              onPressed: () => setState(() {
+                    _showchart = !_showchart;
+                  }),
+              icon: Icon(_showchart ? Icons.list : Icons.pie_chart)),
         IconButton(
             onPressed: () => _openTransactionFormModal(context),
-            icon: const Icon(Icons.add))
+            icon: const Icon(Icons.add)),
       ],
       title: const Text('Despesas pessoais'),
     );
@@ -117,24 +123,11 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             if (isLandscape)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Exibir gráfico'),
-                  Switch(
-                      value: _showchart,
-                      onChanged: (value) {
-                        setState(() {
-                          _showchart = value;
-                        });
-                      }),
-                ],
-              ),
-            if (_showchart || !isLandscape)
-              Container(
-                height: availableHeight * (isLandscape ? 0.7 : 0.3),
-                child: Chart(_recentTransactions),
-              ),
+              if (_showchart || !isLandscape)
+                Container(
+                  height: availableHeight * (isLandscape ? 0.7 : 0.3),
+                  child: Chart(_recentTransactions),
+                ),
             if (!_showchart || !isLandscape)
               Container(
                 height: availableHeight * 0.7,
