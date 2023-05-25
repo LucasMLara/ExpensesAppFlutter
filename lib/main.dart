@@ -111,7 +111,11 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () => _openTransactionFormModal(context),
             icon: const Icon(Icons.add)),
       ],
-      title: const Text('Despesas pessoais'),
+      title: const Text(
+        'Despesas pessoais',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      centerTitle: true,
     );
     final availableHeight = mediaQuery.size.height -
         appBar.preferredSize.height -
