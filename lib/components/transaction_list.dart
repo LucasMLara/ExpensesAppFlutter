@@ -56,52 +56,23 @@ class TrasactionList extends StatelessWidget {
                         tr.title,
                         style: Theme.of(context).textTheme.headline6,
                       ),
-                      trailing: IconButton(
-                        onPressed: () => onRemove(tr.id),
-                        icon: const Icon(Icons.delete),
-                        color: Theme.of(context).errorColor,
-                      ),
+                      trailing: MediaQuery.of(context).size.width > 400
+                          ? TextButton(
+                              onPressed: () => onRemove(tr.id),
+                              child: Text(
+                                'Excluir',
+                                style: TextStyle(
+                                    color: Theme.of(context).errorColor),
+                              ),
+                            )
+                          : IconButton(
+                              onPressed: () => onRemove(tr.id),
+                              icon: const Icon(Icons.delete),
+                              color: Theme.of(context).errorColor,
+                            ),
                       subtitle: Text(DateFormat('d MMM y').format(tr.date)),
                     ),
                   );
                 })));
   }
 }
-// (ctx, index) => Card(
-//                       child: Row(
-//                         children: [
-//                           Container(
-//                             margin: const EdgeInsets.symmetric(
-//                                 horizontal: 15, vertical: 10),
-//                             decoration: BoxDecoration(
-//                                 border: Border.all(
-//                                     color: Theme.of(context).primaryColor,
-//                                     width: 2)),
-//                             padding: const EdgeInsets.all(10),
-//                             child: Text(
-//                               "R\$ ${transactions[index].value.toStringAsFixed(2)}",
-//                               style: TextStyle(
-//                                 fontWeight: FontWeight.bold,
-//                                 fontSize: 20,
-//                                 color: Theme.of(context).primaryColor,
-//                               ),
-//                             ),
-//                           ),
-//                           Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 transactions[index].title,
-//                                 style: const TextStyle(
-//                                     fontWeight: FontWeight.bold),
-//                               ),
-//                               Text(
-//                                 DateFormat('d MMM y')
-//                                     .format(transactions[index].date),
-//                                 style: const TextStyle(color: Colors.grey),
-//                               )
-//                             ],
-//                           )
-//                         ],
-//                       ),
-//                     )
